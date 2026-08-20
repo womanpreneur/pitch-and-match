@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RSVP | WOMANPRENEUR PITCH & MATCH 2026</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burgundy: #641f32;
+            --burgundy-dark: #481525;
+            --gold: #c9a66b;
+            --cream: #f8f5f1;
+            --white: #ffffff;
+            --text: #242124;
+            --muted: #777178;
+            --border: #e5dfe1;
+            --error: #b42318;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(201, 166, 107, 0.16),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f7f3f0,
+                    #eee7e5
+                );
+
+            color: var(--text);
+            padding: 40px 20px;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .header {
+            background: var(--burgundy);
+            color: white;
+
+            border-radius: 20px 20px 0 0;
+
+            padding: 42px 45px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            border-radius: 50%;
+
+            right: -70px;
+            top: -90px;
+        }
+
+        .header::after {
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            border: 1px solid rgba(201, 166, 107, 0.3);
+
+            border-radius: 50%;
+
+            right: 30px;
+            bottom: -100px;
+        }
+
+        .eyebrow {
+            position: relative;
+            z-index: 1;
+
+            color: var(--gold);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 14px;
+        }
+
+        .header h1 {
+            position: relative;
+            z-index: 1;
+
+            font-size: clamp(28px, 5vw, 42px);
+
+            line-height: 1.1;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 20px;
+
+            max-width: 580px;
+        }
+
+        .event-details {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 12px 25px;
+
+            color: rgba(255, 255, 255, 0.86);
+
+            font-size: 14px;
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .event-detail span:first-child {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           FORM CONTAINER
+        ===================================================== */
+
+        .form-container {
+            background: var(--white);
+
+            border-radius: 0 0 20px 20px;
+
+            padding: 45px;
+
+            box-shadow:
+                0 20px 60px rgba(54, 28, 37, 0.12);
+        }
+
+        /*
+        This contains BOTH the introduction and the form.
+        It allows us to hide both after successful submission.
+        */
+
+        #formContent {
+            display: block;
+        }
+
+        .intro {
+            color: var(--muted);
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* =====================================================
+           QUESTIONS
+        ===================================================== */
+
+        .question {
+            margin-bottom: 32px;
+        }
+
+        .question-label {
+            display: block;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            margin-bottom: 13px;
+
+            color: var(--text);
+        }
+
+        .required {
+            color: var(--burgundy);
+        }
+
+
+        /* =====================================================
+           RADIO BUTTONS
+        ===================================================== */
+
+        .radio-group {
+            display: grid;
+            gap: 10px;
+        }
+
+        .radio-option {
+            position: relative;
+        }
+
+        .radio-option input {
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+        .radio-option label {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 15px 17px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+
+            color: #4a4548;
+
+            font-size: 14px;
+        }
+
+        .radio-option label:hover {
+            border-color: var(--gold);
+
+            background: #fcfaf7;
+        }
+
+        .radio-circle {
+            width: 18px;
+            height: 18px;
+
+            border: 1.5px solid #b9b2b5;
+
+            border-radius: 50%;
+
+            position: relative;
+
+            flex-shrink: 0;
+
+            transition: all 0.2s ease;
+        }
+
+        .radio-option input:checked + label {
+            border-color: var(--burgundy);
+
+            background: #faf5f6;
+
+            color: var(--burgundy);
+        }
+
+        .radio-option input:checked + label .radio-circle {
+            border-color: var(--burgundy);
+        }
+
+        .radio-option input:checked + label .radio-circle::after {
+            content: "";
+
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+
+            background: var(--burgundy);
+
+            border-radius: 50%;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+        }
+
+
+        /* =====================================================
+           INPUTS
+        ===================================================== */
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            background: #fff;
+
+            border-radius: 10px;
+
+            padding: 15px 16px;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            color: var(--text);
+
+            outline: none;
+
+            transition: all 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: var(--burgundy);
+
+            box-shadow:
+                0 0 0 3px rgba(100, 31, 50, 0.08);
+        }
+
+        textarea {
+            min-height: 125px;
+
+            resize: vertical;
+
+            line-height: 1.6;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #aaa4a7;
+        }
+
+
+        /* =====================================================
+           OTHER DIETARY FIELD
+        ===================================================== */
+
+        .other-field {
+            display: none;
+
+            margin-top: 10px;
+        }
+
+        .other-field.show {
+            display: block;
+        }
+
+
+        /* =====================================================
+           ERRORS
+        ===================================================== */
+
+        .error-message {
+            display: none;
+
+            color: var(--error);
+
+            font-size: 12px;
+
+            margin-top: 8px;
+        }
+
+        .question.error .question-label {
+            color: var(--error);
+        }
+
+        .question.error .radio-option label,
+        .question.error input[type="text"] {
+            border-color: rgba(180, 35, 24, 0.5);
+        }
+
+        .question.error .error-message {
+            display: block;
+        }
+
+
+        /* =====================================================
+           SUBMIT
+        ===================================================== */
+
+        .submit-area {
+            margin-top: 38px;
+
+            padding-top: 28px;
+
+            border-top: 1px solid #eee;
+        }
+
+        .submit-btn {
+            width: 100%;
+
+            border: none;
+
+            background: var(--burgundy);
+
+            color: white;
+
+            padding: 17px 25px;
+
+            border-radius: 10px;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.3px;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--burgundy-dark);
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 8px 20px rgba(100, 31, 50, 0.2);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.65;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+            box-shadow: none;
+        }
+
+        .privacy-note {
+            text-align: center;
+
+            color: #999296;
+
+            font-size: 11px;
+
+            margin-top: 13px;
+        }
+
+
+        /* =====================================================
+           SUCCESS MESSAGE
+        ===================================================== */
+
+        .success {
+            display: none;
+
+            text-align: center;
+
+            padding: 35px 20px 20px;
+        }
+
+        .success.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 65px;
+            height: 65px;
+
+            background: #f1e8eb;
+
+            color: var(--burgundy);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 0 auto 20px;
+
+            font-size: 27px;
+        }
+
+        .success h2 {
+            font-size: 25px;
+
+            margin-bottom: 10px;
+
+            color: var(--burgundy);
+        }
+
+        .success p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            text-align: center;
+
+            padding: 20px;
+
+            color: #8a8387;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 32px 25px;
+
+                border-radius: 16px 16px 0 0;
+            }
+
+            .header h1 {
+                font-size: 29px;
+            }
+
+            .event-details {
+                flex-direction: column;
+
+                gap: 9px;
+            }
+
+            .form-container {
+                padding: 30px 24px;
+
+                border-radius: 0 0 16px 16px;
+            }
+
+            .question {
+                margin-bottom: 27px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <div class="eyebrow">
+            RSVP • Invitation
+        </div>
+
+        <h1>
+            WOMANPRENEUR<br>
+            PITCH & MATCH 2026
+        </h1>
+
+        <div class="event-details">
+
+            <div class="event-detail">
+                <span>DATE</span>
+                <span>04 September 2026</span>
+            </div>
+
+            <div class="event-detail">
+                <span>VENUE</span>
+                <span>Johannesburg Stock Exchange</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         FORM CONTAINER
+    ====================================================== -->
+
+    <main class="form-container">
+
+
+        <!-- =================================================
+             FORM CONTENT
+
+             This includes the introduction AND form.
+             It will disappear after successful submission.
+        ================================================== -->
+
+        <div id="formContent">
+
+
+            <p class="intro">
+
+                We would be delighted to have you join us for
+                WOMANPRENEUR PITCH & MATCH 2026.
+                Please complete the form below to confirm your
+                attendance.
+
+            </p>
+
+
+            <!-- =================================================
+                 RSVP FORM
+            ================================================== -->
+
+            <form id="rsvpForm" novalidate>
+
+
+                <!-- QUESTION 1 -->
+
+                <div
+                    class="question"
+                    id="attendanceQuestion"
+                >
+
+                    <label class="question-label">
+
+                        1. Can you attend?
+
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <div class="radio-group">
+
+
+                        <div class="radio-option">
+
+                            <input
+                                type="radio"
+                                id="attending"
+                                name="attendance"
+                                value="Yes, I'll be there"
+                            >
+
+                            <label for="attending">
+
+                                <span class="radio-circle"></span>
+
+                                Yes, I'll be there
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="radio-option">
+
+                            <input
+                                type="radio"
+                                id="not-attending"
+                                name="attendance"
+                                value="Sorry, can't make it"
+                            >
+
+                            <label for="not-attending">
+
+                                <span class="radio-circle"></span>
+
+                                Sorry, can't make it
+
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="error-message">
+
+                        Please select an attendance option.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- QUESTION 2 -->
+
+                <div
+                    class="question"
+                    id="nameQuestion"
+                >
+
+                    <label
+                        class="question-label"
+                        for="name"
+                    >
+
+                        2. Name and Surname
+
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name and surname"
+                    >
+
+
+                    <div class="error-message">
+
+                        Please enter your name and surname.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- QUESTION 3 -->
+
+                <div
+                    class="question"
+                    id="dietQuestion"
+                >
+
+                    <label class="question-label">
+
+                        3. What are your Dietary Requirements?
+
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <div class="radio-group">
+
+
+                        <div class="radio-option">
+
+                            <input
+                                type="radio"
+                                id="no-diet"
+                                name="diet"
+                                value="I don't have any dietary requirements"
+                            >
+
+                            <label for="no-diet">
+
+                                <span class="radio-circle"></span>
+
+                                I don't have any dietary requirements
+
+                            </label>
+
+                        </div>
+
+
+
+                        <div class="radio-option">
+
+                            <input
+                                type="radio"
+                                id="other-diet"
+                                name="diet"
+                                value="Other"
+                            >
+
+                            <label for="other-diet">
+
+                                <span class="radio-circle"></span>
+
+                                Other
+
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- OTHER DIETARY REQUIREMENTS -->
+
+                    <div
+                        class="other-field"
+                        id="otherDietField"
+                    >
+
+                        <input
+                            type="text"
+                            id="otherDiet"
+                            name="otherDiet"
+                            placeholder="Please specify your dietary requirements"
+                        >
+
+                    </div>
+
+
+                    <div class="error-message">
+
+                        Please select a dietary requirement.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- QUESTION 4 -->
+
+                <div class="question">
+
+                    <label
+                        class="question-label"
+                        for="comments"
+                    >
+
+                        4. Comments and/or questions
+
+                    </label>
+
+
+                    <textarea
+                        id="comments"
+                        name="comments"
+                        placeholder="Is there anything you'd like us to know?"
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                    >
+
+                        Confirm RSVP
+
+                    </button>
+
+
+                    <p class="privacy-note">
+
+                        Your information will only be used for
+                        event-related purposes.
+
+                    </p>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+
+        <!-- =================================================
+             SUCCESS MESSAGE
+
+             This is hidden until the form is successfully
+             submitted.
+        ================================================== -->
+
+        <div
+            class="success"
+            id="successMessage"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h2>
+                RSVP Received
+            </h2>
+
+
+            <p>
+
+                Thank you for responding to
+
+                <strong>
+                    WOMANPRENEUR PITCH & MATCH 2026
+                </strong>.
+
+                We look forward to connecting with you.
+
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        WOMANPRENEUR PITCH & MATCH 2026
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* =========================================================
+       GOOGLE SHEETS CONNECTION
+    =========================================================
+
+       Replace the empty string below with your Google Apps
+       Script Web App URL.
+
+       Example:
+
+       const GOOGLE_SCRIPT_URL =
+           "https://script.google.com/macros/s/AKfycbxQpxADy4iO6EateeSmcWLAJS9r7ChuWsCKZltAuY08pXckOfM4VS3vEZID0Tlri4buHA/exec";
+
+    ========================================================= */
+
+
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQpxADy4iO6EateeSmcWLAJS9r7ChuWsCKZltAuY08pXckOfM4VS3vEZID0Tlri4buHA/exec";
+
+
+
+    /* =========================================================
+       ELEMENTS
+    ========================================================= */
+
+
+    const formContent =
+        document.getElementById("formContent");
+
+
+    const form =
+        document.getElementById("rsvpForm");
+
+
+    const otherDietRadio =
+        document.getElementById("other-diet");
+
+
+    const noDietRadio =
+        document.getElementById("no-diet");
+
+
+    const otherDietField =
+        document.getElementById("otherDietField");
+
+
+    const otherDietInput =
+        document.getElementById("otherDiet");
+
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+
+    const submitButton =
+        document.querySelector(".submit-btn");
+
+
+
+    /* =========================================================
+       SHOW OTHER DIETARY FIELD
+    ========================================================= */
+
+
+    otherDietRadio.addEventListener(
+        "change",
+        function () {
+
+            otherDietField.classList.add("show");
+
+            otherDietInput.focus();
+
+        }
+    );
+
+
+
+    /* =========================================================
+       HIDE OTHER DIETARY FIELD
+    ========================================================= */
+
+
+    noDietRadio.addEventListener(
+        "change",
+        function () {
+
+            otherDietField.classList.remove("show");
+
+            otherDietInput.value = "";
+
+        }
+    );
+
+
+
+    /* =========================================================
+       REMOVE VALIDATION ERRORS WHEN USER INTERACTS
+    ========================================================= */
+
+
+    document
+        .querySelectorAll("input, textarea")
+        .forEach(
+            function (input) {
+
+
+                input.addEventListener(
+                    "input",
+                    function () {
+
+                        const question =
+                            this.closest(".question");
+
+
+                        if (question) {
+
+                            question.classList.remove(
+                                "error"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+
+                input.addEventListener(
+                    "change",
+                    function () {
+
+                        const question =
+                            this.closest(".question");
+
+
+                        if (question) {
+
+                            question.classList.remove(
+                                "error"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+    /* =========================================================
+       FORM SUBMISSION
+    ========================================================= */
+
+
+    form.addEventListener(
+        "submit",
+        async function (event) {
+
+
+            /*
+            Prevent normal browser submission.
+            */
+
+            event.preventDefault();
+
+
+
+            let valid = true;
+
+
+
+            /* =================================================
+               ATTENDANCE VALIDATION
+            ================================================= */
+
+
+            const attendance =
+                document.querySelector(
+                    'input[name="attendance"]:checked'
+                );
+
+
+            const attendanceQuestion =
+                document.getElementById(
+                    "attendanceQuestion"
+                );
+
+
+            if (!attendance) {
+
+                attendanceQuestion.classList.add(
+                    "error"
+                );
+
+                valid = false;
+
+            } else {
+
+                attendanceQuestion.classList.remove(
+                    "error"
+                );
+
+            }
+
+
+
+            /* =================================================
+               NAME VALIDATION
+            ================================================= */
+
+
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+            const nameQuestion =
+                document.getElementById(
+                    "nameQuestion"
+                );
+
+
+            if (!name) {
+
+                nameQuestion.classList.add(
+                    "error"
+                );
+
+                valid = false;
+
+            } else {
+
+                nameQuestion.classList.remove(
+                    "error"
+                );
+
+            }
+
+
+
+            /* =================================================
+               DIETARY REQUIREMENTS VALIDATION
+            ================================================= */
+
+
+            const diet =
+                document.querySelector(
+                    'input[name="diet"]:checked'
+                );
+
+
+            const dietQuestion =
+                document.getElementById(
+                    "dietQuestion"
+                );
+
+
+            if (!diet) {
+
+                dietQuestion.classList.add(
+                    "error"
+                );
+
+                valid = false;
+
+            }
+
+
+            else if (
+                diet.value === "Other" &&
+                !otherDietInput.value.trim()
+            ) {
+
+                dietQuestion.classList.add(
+                    "error"
+                );
+
+                otherDietInput.focus();
+
+                valid = false;
+
+            }
+
+
+            else {
+
+                dietQuestion.classList.remove(
+                    "error"
+                );
+
+            }
+
+
+
+            /* =================================================
+               STOP IF INVALID
+            ================================================= */
+
+
+            if (!valid) {
+
+
+                const firstError =
+                    document.querySelector(
+                        ".question.error"
+                    );
+
+
+                if (firstError) {
+
+                    firstError.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                }
+
+
+                return;
+
+            }
+
+
+
+            /* =================================================
+               CHECK GOOGLE SHEETS URL
+            ================================================= */
+
+
+            if (!GOOGLE_SCRIPT_URL) {
+
+                alert(
+                    "The RSVP form has not been connected to Google Sheets yet."
+                );
+
+                return;
+
+            }
+
+
+
+            /* =================================================
+               COLLECT FORM DATA
+            ================================================= */
+
+
+            const formData = {
+
+
+                name:
+                    name,
+
+
+                attendance:
+                    attendance.value,
+
+
+                dietaryRequirements:
+                    diet.value === "Other"
+                        ? otherDietInput.value.trim()
+                        : diet.value,
+
+
+                comments:
+                    document
+                        .getElementById("comments")
+                        .value
+                        .trim()
+
+            };
+
+
+
+            /* =================================================
+               DISABLE BUTTON WHILE SUBMITTING
+            ================================================= */
+
+
+            submitButton.disabled = true;
+
+
+            submitButton.textContent =
+                "Submitting RSVP...";
+
+
+
+            /* =================================================
+               SEND DATA TO GOOGLE SHEETS
+            ================================================= */
+
+
+            try {
+
+
+                await fetch(
+                    GOOGLE_SCRIPT_URL,
+                    {
+
+                        method: "POST",
+
+
+                        /*
+                        text/plain is used to avoid a CORS
+                        preflight request with Google Apps Script.
+                        */
+
+                        headers: {
+
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+
+                        },
+
+
+                        body:
+                            JSON.stringify(
+                                formData
+                            )
+
+                    }
+                );
+
+
+
+                /* =================================================
+                   SUCCESS
+
+                   IMPORTANT:
+
+                   We hide #formContent rather than only the form.
+
+                   This hides BOTH:
+                   - Introduction text
+                   - RSVP form
+
+                   Leaving only the success message.
+                ================================================= */
+
+
+                formContent.style.display =
+                    "none";
+
+
+                successMessage.classList.add(
+                    "show"
+                );
+
+
+                /*
+                Scroll back to the top of the page.
+                */
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+
+            }
+
+
+            catch (error) {
+
+
+                console.error(
+                    "RSVP submission error:",
+                    error
+                );
+
+
+                alert(
+                    "We couldn't submit your RSVP. Please check your internet connection and try again."
+                );
+
+
+                /*
+                Re-enable button so the user can try again.
+                */
+
+                submitButton.disabled =
+                    false;
+
+
+                submitButton.textContent =
+                    "Confirm RSVP";
+
+
+            }
+
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
